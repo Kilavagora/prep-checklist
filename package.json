@@ -1,0 +1,35 @@
+{
+  "name": "prep-handoff",
+  "version": "1.0.0",
+  "description": "A communication tool for CivicEngage developed for CivicPlus",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "latest",
+    "mongodb": "^2.2.30"
+  },
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "mongodb",
+    "restful",
+    "demo",
+    "sticky",
+    "notes"
+  ],
+  "author": "adam-elliott",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/adam-elliott/prep-checklist.git"
+  },
+  "bugs": {
+    "url": "https://github.com/adam-elliott/prep-checklist/issues"
+  },
+  "homepage": "https://github.com/adam-elliott/prep-checklist#readme",
+  "devDependencies": {}
+}

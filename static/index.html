@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<meta charset="utf-8">
+			<title>CP Creative Services | Site Prep Tools</title>
+			<meta name="description" content="An interactive tool to assist with building ADA compliant color palettes.">
+			<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+			
+			<!--jQuery CDN-->
+			<script
+				src="https://code.jquery.com/jquery-3.2.1.min.js"
+				integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+				crossorigin="anonymous"></script>
+			
+			<!--Bootstrap CDN-->
+			<link rel="stylesheet"
+				  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+				  integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+				  crossorigin="anonymous">
+			<link rel="stylesheet"
+				  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+				  integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+					integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+					crossorigin="anonymous"></script>
+			
+			<!--jsColor
+			<script src="jscolor.js"></script>
+			-->
+						
+			<!--jsPDF-->
+			<script src="js/jspdf.min.js"></script>
+			<script src="js/jspdf.debug.js"></script>
+		
+			<!--CSS-->
+			<link rel="stylesheet" type="text/css" href="css/style.css?<?php echo date('l jS \of F Y h:i:s A'); ?>" />
+			<link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
+			<style type="text/css">
+
+			
+			
+			</style>
+		</head>
+		
+		<body>
+			<!--CP Header bar-->
+			<div id=cpBrand>
+				<img src="images/cpLogo.png" alt=CivicPlus />
+				<h1><strong>Creative Services</strong></h1>
+				
+				<ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Site Prep Tools <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a id="guide">Site Prep Guide</a></li>
+            <li><a id="color">Color Palette Tool <span class="pull-right glyphicon glyphicon-share-alt"></span> </a> </li>
+            <li><a id="prep">Site Prep Hand-off Form</a></li>
+			<li role="separator" class="divider"></li>
+			<li><a href="http://cptools.civicplus.com" target="_blank">CP Tools <span class="pull-right glyphicon glyphicon-share-alt"></a></li>
+			<li><a href="http://templatelist.civicplus.com" target="_blank">Template List <span class="pull-right glyphicon glyphicon-share-alt"></a></li>
+			<li><a href="http://uitools.civicplus.com/forms.php?FID=1" target="_blank">URL Resources <span class="pull-right glyphicon glyphicon-share-alt"></a></li>
+          </ul>
+        </li>
+      </ul>
+			</div>
+			
+			<div id="prepTools">
+				
+				<div class="container" id="prepSplash">
+					<img src="images/prepSplash.png" alt="Illustration of web design process elements">
+					<br/><br/><br/>
+					<h4>Select a tool below to continue:</h4>
+					<button class="btn btn-default btn-lg" id="guide2">Prep Guide</button>
+					<button class="btn btn-default btn-lg" id="color2">Color Palette Tool</button>
+					<button class="btn btn-default btn-lg" id="prep2">Prep Hand-off Form</button>
+				</div>
+			
+			<div id="prepGuide">
+
+			</div>
+			
+			
+			
+			<div id="prepColor">
+				<iframe width="100%" height="10000px" src="http://adamelliott.com/color-palette"></iframe>
+			</div>
+			
+			<div id="prepHandoff">
+			</div>
+			
+			</div>
+			
+		<script src="js/prepHandoff.js"></script>
+
+		
+		</body>
+	</html>

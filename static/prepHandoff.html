@@ -1,0 +1,314 @@
+
+<div class="container">
+	<div class="row">
+		<h4 class="pull-left">Prep Hand-off Form</h4>
+		<button value="Load Color Palette" data-placement="bottom" data-toggle="modal" data-target="#clientModal" onclick="loadClients()" class="pull-right cpBrand">Load Entry</button>
+		<button value="Save Color Palette" data-placement="bottom" onclick="submitForm()" class="pull-right cpBrand">Save Entry</button>
+	</div>
+	<form>
+		<div class="row">
+			<h4>Project Information</h4>
+			<div class="col-md-12">
+				<label for="clientName">Client Name (ST-City):</label>
+				<input type="text" class="form-control" name="clientName" id="clientName">
+			</div>
+			<div class="col-md-6">
+				<div class="form-group">
+				  <label for="prepDesigner">Prep Designer:</label>
+				  <input type="text" class="form-control" name="prepDesigner" id="prepDesigner">
+				</div>
+				<div class="form-group">
+				  <label for="compDesigner">Comp Designer:</label>
+				  <input type="text" class="form-control" name="compDesigner" id="compDesigner">
+			</div>
+			</div>
+			<div class="col-md-6">
+				<div class="form-group">
+				  <label for="artDirector">Art Director:</label>
+				  <input type="text" class="form-control" name="artDirector" id="artDirector">
+				</div>
+				<div class="form-group">
+				  <label for="projectManager">Project Manager:</label>
+				  <input type="text" class="form-control" name="projectManager" id="projectManager">
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<h4>Template Modules</h4>
+			<div class="col-md-2">
+				<label for="newsFlash">News Flash:</label>
+				  <div class="checkbox"><label><input type="checkbox" name="newsList" id="newsList"> List</label></div>
+				  <div class="checkbox"><label><input type="checkbox" name="newsStatic" id="newsStatic"> Static</label></div>
+				  <div class="checkbox"><label><input type="checkbox" name="newsCarousel" id="newsCarousel"> Carousel</label></div>
+				  <div class="checkbox"><label><input type="checkbox" name="newsThumbnails" id="newsThumbnails"> Thumbnails</label></div>
+				  <div class="checkbox"><label><input type="checkbox" name="newsNone" id="newsNone"> None</label></div>
+			</div>
+			<div class="col-md-2">
+				<label for="calendar">Calendar:</label>
+				  <div class="checkbox"><label><input type="checkbox" name="calendarList" id="calendarList">List</label></div>
+				  <div class="checkbox"><label><input type="checkbox" name="calendarStrip" id="calendarStrip">Strip</label></div>
+				  <div class="checkbox"><label><input type="checkbox" name="calendarGrid" id="calendarGrid">Grid</label></div>
+				  <div class="checkbox"><label><input type="checkbox" name="calendarNone" id="calendarNone">None</label></div>
+			</div>
+			<div class="col-md-2">
+				<label for="background">Background:</label>
+				<div class="checkbox"><label><input type="checkbox" name="bgStatic" id="bgStatic">Static</label></div>
+				<div class="checkbox"><label><input type="checkbox" name="bgRefreshing" id="bgRefreshing">Refreshing</label></div>
+				<div class="checkbox"><label><input type="checkbox" name="bgRotating" id="bgRotating">Rotating</label></div>
+				<div class="checkbox"><label><input type="checkbox" name="bgFixed" id="bgFixed">Fixed</label></div>
+				<div class="checkbox"><label><input type="checkbox" name="bgBasic" id="bgBasic">Basic Color/Texture</label></div>
+			</div>
+			<div class="col-md-2">
+				<label for="otherModules">Other modules:</label>
+				<div class="checkbox"><label><input type="checkbox" name="slideshow" id="slideshow"> Slideshow</label></div>					
+				<div class="checkbox"><label><input type="checkbox" name="graphicLinks" id="graphicLinks"> Graphic Links</label></div>
+				<div class="checkbox"><label><input type="checkbox" name="infoAdvanced" id="infoAdvanced"> Info Advanced</label></div>				
+			</div>
+			</div>
+
+		
+		<div class="row">
+			<h4>Template Setup Features</h4>
+			<div class="col-md-2">
+				<div class="checkbox">
+					<label><input type="checkbox" name="fixedGlobals" id=="fixedGlobals"> Fixed globals</label>
+				</div>
+				<div class="checkbox">
+					<label><input type="checkbox" name="fixedGraphicLinks" id="fixedGraphicLinks"> Fixed graphic links</label>
+				</div>
+			</div>
+			<div class="col-md-2">
+				<div class="checkbox">
+					<label><input type="checkbox" name="cssOverlay" id="cssOverlay"> CSS Overlay</label>
+			</div>
+				<div class="checkbox">
+					<label><input type="checkbox" name="textures" id="textures"> Textures</label>
+				</div>
+			</div>
+			<div class="col-md-2">
+				<div class="checkbox">
+					<label><input type="checkbox" name="shadows" id="shadows"> Shadows</label>
+				</div>
+				<div class="checkbox">
+					<label><input type="checkbox" name="gradients" id="gradients"> Gradients</label>
+				</div>
+			</div>
+
+		</div>
+		
+		 <div class="row">
+			<h4>Typography</h4>
+			<div class="col-md-2">
+				<label for="ad">Typeface 1:</label>
+				<input type="text" class="form-control" name="font1" id="font1" value="Font name">
+			</div>
+			<div class="col-md-2">
+				<label for="font2">Typeface 2:</label>
+				<input type="text" class="form-control" name="font2" id="font2" value="Font name">
+			</div>
+			<div class="col-md-2">
+				<label for="font3">Typeface 3:</label>
+				<input type="text" class="form-control" name="font3" id="font3" value="Font name">
+			</div>
+			<div class="col-md-2">
+				<label for="font4">Typeface 4:</label>
+				<input type="text" class="form-control" name="font4" id="font4" value="Font name">
+			</div>
+			<div class="col-md-2">
+				<label for="font5">Typeface 5:</label>
+				<input type="text" class="form-control" name="font5" id="font5" value="Font name">
+			</div>
+			<div class="col-md-2">
+				<label for="font6">Typeface 6:</label>
+				<input type="text" class="form-control" name="font6" id="font6" value="Font name">
+			</div>
+		 </div> 
+		
+		<div class="row">
+			<h4>Template Image Sizes</h4>
+			<div class="col-md-2">
+				<label for="ad">Home banner:</label>
+				<br>
+				<input type="text" class="form-control size" name="homeBannerWidth" id="homeBannerWidth" value="width">
+				<input type="text" class="form-control size" name="homeBannerHeight" id="homeBannerHeight" value="height">
+			</div>
+			<div class="col-md-2">
+				<label for="ad">Interior banner:</label>
+				<br>
+				<input type="text" class="form-control size" name="interiorBannerWidth" id="interiorBannerWidth" value="width">
+				<input type="text" class="form-control size" name="interiorBannerHeight" id="interiorBannerHeight" value="height">
+			</div>
+			<div class="col-md-2">
+				<label for="ad">Simple banner:</label>
+				<br>
+				<input type="text" class="form-control size" name="simpleBannerWidth" id="simpleBannerWidth" value="width">
+				<input type="text" class="form-control size" name="simpleBannerHeight" id="simpleBannerHeight" value="height">
+			</div>
+			<div class="col-md-2">
+				<label for="ad">News flash thumbnail:</label>
+				<br>
+				<input type="text" class="form-control size" name="newsFlashWidth" id="newsFlashWidth" value="width">
+				<input type="text" class="form-control size" name="newsFlashHeight" id="newsFlashHeight" value="height">
+			</div>
+			<div class="col-md-2">
+				<label for="ad">Calendar thumbnail:</label>
+				<br>
+				<input type="text" class="form-control size" name="calendarWidth" id="calendarWidth" value="width">
+				<input type="text" class="form-control size" name="calendarHeight" id=="calendarHeight" value="height">
+			</div>
+			<div class="col-md-2">
+				<label for="ad">Spotlight image:</label>
+				<br>
+				<input type="text" class="form-control size" name="spotlightWidth" id="spotlightWidth" value="width">
+				<input type="text" class="form-control size" name="spotlightHeight" id="spotlightHeight" value="height">
+			</div>
+
+			
+		</div>
+		  
+		<div class="row">
+			<h4>Social Media embed codes</h4>
+			<div class="col-md-6">
+				<label for="path">Facebook embed code: 
+					<a data-toggle="tooltip" data-placement="right" data-original-title="Facebook Embed Documentation" href="https://developers.facebook.com/docs/plugins/page-plugin" target="_blank">
+						<span class="glyphicon glyphicon-question-sign" aria-hidden="true" ></span>
+					</a>
+				</label>
+				<textarea class="form-control" rows="2" name="facebook" id="facebook"></textarea>
+			</div>
+			<div class="col-md-6">
+				<label for="path">Twitter embed code:
+				<a data-toggle="tooltip" data-placement="right" data-original-title="Twitter Embed Documentation" href="https://support.twitter.com/articles/20170071" target="_blank">
+					<span class="glyphicon glyphicon-question-sign"  aria-hidden="true"></span>
+				</a>
+				</label>
+				<textarea class="form-control" rows="2" name="twitter" id="twitter"></textarea>
+			</div>
+			<div class="col-md-6">
+				<label for="path">Instagram embed code:
+				<a data-toggle="tooltip" data-placement="right" data-original-title="Instagram Embed Documentation" href="https://www.instagram.com/developer/embedding/" target="_blank">
+					<span class="glyphicon glyphicon-question-sign"  aria-hidden="true"></span>
+				</a>
+				</label>
+				<textarea class="form-control" rows="2" name="instagram" id="instagram"></textarea>
+			</div>
+			<div class="col-md-6">
+				<label for="path">Other custom html/css:</label>
+				<textarea class="form-control" rows="2" name="customHtml" id="customHtml"></textarea>
+			</div>
+		</div>
+		
+		
+		<div class="row">
+			<h4>Asset Sign-off</h4>
+			<div class="col-md-2">
+				<div class="checkbox">
+					<label><input type="checkbox" name="psd" id="psd"> Photoshop Files</label>
+				</div>
+			</div>
+			<div class="col-md-2">
+				<div class="checkbox">
+					<label><input type="checkbox" name="jpg" id="jpg"> JPG Previews</label>
+			</div>
+			</div>
+			<div class="col-md-2">
+				<div class="checkbox">
+					<label><input type="checkbox" name="clientPdf" id="clientPdf"> Client PDF</label>
+				</div>
+			</div>
+			<div class="col-md-2">
+				<div class="checkbox">
+					<label><input type="checkbox" name="colorPalette" id="colorPalette"> Color Palette</label>
+				</div>
+			</div>
+			<div class="col-md-2">
+				<div class="checkbox">
+					<label><input type="checkbox" name="additionalGraphics" id="additionalGraphics"> Additional Graphics</label>
+				</div>								
+			</div>
+			<div class="col-md-2">
+				<div class="checkbox">
+					<label><input type="checkbox" name="assets" id="assets"> Template Assets</label>
+				</div>								
+			</div>
+		
+		</div>
+		<div class="row">
+			<h4>Site Layout Details</h4>
+		 <div class="col-md-12">
+		<!--<div class="form-group">
+		  <label for="path">Color palette:</label>
+		  <input type="path" class="form-control" id="path">
+		</div>-->
+		
+		<div class="form-group">
+		  <label for="path">File path to site layout:</label>
+		  <input type="path" class="form-control" name="filePath" id="filePath">
+		</div>
+		
+		<!--<div class="form-group">
+		  <label for="path">Color palette:</label>
+		  <div class="dropdown">
+			<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+			  Choose color palette from list
+			  <span class="caret"></span>
+			</button>
+			<ul class="dropdown-menu" aria-labelledby="dropdownMenu1"> 
+			  <li><a href="#">This needs</a></li>
+			  <li><a href="#">to load</a></li>
+			  <li><a href="#">color palettes</a></li>
+			  <li><a href="#">from database.</a></li>
+			</ul>
+			<span class="glyphicon glyphicon-refresh"></span>
+		  </div>
+		</div>-->
+		
+		<div class="form-group">
+		  <label for="path">Notes for web developer:</label>
+		  <textarea class="form-control" rows="5" name="notes" id="notes"></textarea>
+		</div>
+		 </div>
+
+		<div class="col-md-12">
+		<button id="clientPDF" class="btn btn-default cpBrand">Generate Client PDF</button>
+		<div id="prepSubmit" class="btn btn-default cpBrand">Submit Form</di>
+		
+	  </form>
+		</div>
+	
+		</div>
+</div>
+
+<div id="clientModal" class="modal fade" tabindex="-1" role="dialog">
+	<div class="modal-dialog" role="document">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		  <h4 class="modal-title">Load Site Prep Hand-off Form</h4>
+		</div>
+		<div class="modal-body">
+		  <p>Select a client from the list below:</p>
+		  <table class="table" id="clients">
+			
+		  </table>
+		</div>
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-default cpBrand" data-dismiss="modal">Close</button>
+		  <button type="button" class="btn btn-primary ">Load Client</button>
+		</div>
+	  </div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+<script>
+		$('#saveClient').click(function(event){
+			submitForm();
+		});
+		$('#prepSubmit').click(function(event){
+			submitForm();
+		});
+	
+</script>
