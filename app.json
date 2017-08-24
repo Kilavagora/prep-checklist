@@ -1,0 +1,12 @@
+{
+  "name": "prepHandoff",
+  "description": "A communication tool for CivicEngage developed for CivicPlus",
+  "repository": "https://github.com/adam-elliott/prep-checklist/",
+  "logo": "https://rawgit.com/adam-elliott/prep-checklist/master/static/JavaScript.svg",
+  "keywords": ["node", "express", "mongodb", "restful", "demo", "prep", "handoff", "civicplus"],
+  "addons": [
+  {
+    "plan": "mongolab:sandbox",
+    "as": "MONGO"
+  }]
+}
