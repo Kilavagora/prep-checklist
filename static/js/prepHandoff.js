@@ -58,19 +58,18 @@
 			//	event.preventDefault();
 			//	savePDF();
 			//});
+		
 			
+		function toJSON(form){
+			var array = jQuery(form).serializeArray();
+			var json = {};
 			
+			jQuery.each(array, function() {
+				json[this.name] = this.value || '';
+			});
 			
-			function toJSON(form){
-				var array = jQuery(form).serializeArray();
-				var json = {};
-				
-				jQuery.each(array, function() {
-					json[this.name] = this.value || '';
-				});
-				
-				return json;
-			}
+			return json;
+		}
 		
 		function submitForm() {
 			saveClient(toJSON($('form')));
@@ -120,11 +119,17 @@
 			  
 				let clientsArray = JSON.parse(this.responseText);
 				//$('input[name="clientName"]')[0].value = clientsArray[0].clientName;
-				console.log(clientsArray);
-				for(var id in clientsArray[0]) {        
+				
+				for(var id in clientsArray[0]) {
+					console.log(clientsArray[0][id]);
 					$('input#' + id).val( clientsArray[0][id] );
 					$('textarea#' + id).val( clientsArray[0][id] );
 					$('input[type=checkbox]#' + id).attr( "checked", clientsArray[0][id]);
+					$('select#' + id).val(clientsArray[0][id] );
+					
+					
+					
+					//$('#font' + id).attr( "checked", clientsArray[0][id]);
 					//console.log(id);
 					//console.log(clientsArray[0][id]);
 				}
@@ -132,6 +137,28 @@
 			}
 		   oReq.send();
 		}
+		
+function loadFonts() {
+	let oReq = new XMLHttpRequest();
+	oReq.open("GET", "https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyABZt_6AWO56SxCHFjlUc05-5mUjGq4V-s");
+	oReq.setRequestHeader("Content-Type","application/json");
+	oReq.onload = function() {
+		let fontObj = JSON.parse(this.responseText);
+		for (let i = 0; i < fontObj.items.length; i++) {
+			let option=$('<option></option>').text(fontObj.items[i].family);
+			$('#font1').append(option.clone());
+			$('#font2').append(option.clone());
+			$('#font3').append(option.clone());
+			$('#font4').append(option.clone());
+			$('#font5').append(option.clone());
+			$('#font6').append(option.clone());
+			
+		}
+	}
+		oReq.send();
+}
+		
+		
 $(function () {
 	$('[data-toggle="tooltip"]').tooltip();
 	$(document).on('click','input',function(){ this.select(); });
@@ -190,6 +217,7 @@ $(function () {
 		}
 	  }
 	}
+	loadFonts();
 	loadClients();
 	$('#clients').on('click', "tr:not(:first-child)", function(){
 		if ( $(this).hasClass('active') ) {

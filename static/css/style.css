@@ -89,6 +89,10 @@
 					
 				}
 				
+				#prepHandoff select {
+					max-width:100%;
+				}
+				
 				#prepHandoff form .row {
 				padding:20px 20px;
 				}

@@ -15,7 +15,7 @@ app.use(express.static(staticDir));
 let db;
 
 // Connect to the database and if successful start the server.
-mongodb.MongoClient.connect(process.env.MONGODB_URI || "mongodb://mongo:27017/prepHandoff")
+mongodb.MongoClient.connect(process.env.MONGODB_URI || "mongodb://cluster0-shard-00-00-dnqvl.mongodb.net:27017/prepHandoff")
   .then((database) => {
     db = database;
     console.log("Database connection ready");
