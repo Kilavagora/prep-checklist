@@ -2,16 +2,27 @@
 <div class="container">
 	<div class="row">
 		<h4 class="pull-left">Prep Hand-off Form</h4>
+		<!--<button value="View Team Members" data-placement="bottom" data-toggle="modal" data-target="#teamModal" onclick="loadTeam()" class="pull-right cpBrand">Load Team Members</button>-->
 		<button value="Load Color Palette" data-placement="bottom" data-toggle="modal" data-target="#clientModal" onclick="loadClients()" class="pull-right cpBrand">Load Entry</button>
 		<button value="Save Color Palette" data-placement="bottom" onclick="submitForm()" class="pull-right cpBrand">Save Entry</button>
+		<button value="New Color Palette" data-placement="bottom" id="prepClear2" class="btn btn-default pull-right cpBrand">New Entry</button>
 	</div>
-	<form>
+	<form id="handoffForm">
 		<div class="row">
 			<h4>Project Information</h4>
-			<div class="col-md-12">
+			<div class="col-md-6">
 				<label for="clientName">Client Name (ST-City):</label>
 				<input type="text" class="form-control" name="clientName" id="clientName">
 			</div>
+			<div class="col-md-3">
+				<label for="lastUpdated">Last updated:</label>
+				<input type="text" class="form-control disabled" name="lastUpdated" id="lastUpdated">
+			</div>
+			<div class="col-md-3">
+				<label for="clientId">Client Record ID:</label>
+				<input type="text" class="form-control disabled" name="id" id="id">
+			</div>
+			<div id="teamInputs">
 			<div class="col-md-6">
 				<div class="form-group">
 				  <label for="prepDesigner">Prep Designer:</label>
@@ -31,6 +42,11 @@
 				  <label for="projectManager">Project Manager:</label>
 				  <input type="text" class="form-control" name="projectManager" id="projectManager">
 				</div>
+			</div>
+			</div>
+			<div class="col-md-12">
+				<label for="clientName">Project E-mail Address:</label>
+				<input type="text" class="form-control" name="projectEmail" id="projectEmail">
 			</div>
 		</div>
 		
@@ -63,7 +79,10 @@
 				<label for="otherModules">Other modules:</label>
 				<div class="checkbox"><label><input type="checkbox" name="slideshow" id="slideshow"> Slideshow</label></div>					
 				<div class="checkbox"><label><input type="checkbox" name="graphicLinks" id="graphicLinks"> Graphic Links</label></div>
-				<div class="checkbox"><label><input type="checkbox" name="infoAdvanced" id="infoAdvanced"> Info Advanced</label></div>				
+				<div class="checkbox"><label><input type="checkbox" name="infoAdvanced" id="infoAdvanced"> Info Advanced</label></div>
+				<div class="checkbox"><label><input type="checkbox" name="tabbedArea" id="tabbedArea"> Tabbed Area</label></div>
+				<div class="checkbox"><label><input type="checkbox" name="spotlightMM" id="spotlightMM"> Spotlight in MM</label></div>
+				<div class="checkbox"><label><input type="checkbox" name="tabbedArea" id="tabbedArea"> PNG Slideshow</label></div>
 			</div>
 			</div>
 
@@ -156,7 +175,7 @@
 				<label for="ad">Calendar thumbnail:</label>
 				<br>
 				<input type="text" class="form-control size" name="calendarWidth" id="calendarWidth" value="width">
-				<input type="text" class="form-control size" name="calendarHeight" id=="calendarHeight" value="height">
+				<input type="text" class="form-control size" name="calendarHeight" id="calendarHeight" value="height">
 			</div>
 			<div class="col-md-2">
 				<label for="ad">Spotlight image:</label>
@@ -200,6 +219,21 @@
 			</div>
 		</div>
 		
+		<div class="row">
+			
+			<div class="col-md-6">
+				<h4>Color Palette</h4>
+				<input type="text" class="btn btn-default" onclick="loadClientList()" id="clientPalette" name="clientPalette" data-toggle="modal" data-target="#colorModal" value="Click to choose..."></input>
+				<span class="glyphicon glyphicon-refresh"></span>
+				<div id="colorPalettePreview"></div>
+			</div>
+			
+			<div class="col-md-6">
+				<h4>Client PDF</h4>
+				<button type="button" class="btn btn-default" onclick="saveClientPDF()">Generate Client PDF</button>
+			</div>
+		</div>
+		
 		
 		<div class="row">
 			<h4>Asset Sign-off</h4>
@@ -238,32 +272,12 @@
 		<div class="row">
 			<h4>Site Layout Details</h4>
 		 <div class="col-md-12">
-		<!--<div class="form-group">
-		  <label for="path">Color palette:</label>
-		  <input type="path" class="form-control" id="path">
-		</div>-->
 		
 		<div class="form-group">
 		  <label for="path">File path to site layout:</label>
 		  <input type="path" class="form-control" name="filePath" id="filePath">
 		</div>
 		
-		<!--<div class="form-group">
-		  <label for="path">Color palette:</label>
-		  <div class="dropdown">
-			<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-			  Choose color palette from list
-			  <span class="caret"></span>
-			</button>
-			<ul class="dropdown-menu" aria-labelledby="dropdownMenu1"> 
-			  <li><a href="#">This needs</a></li>
-			  <li><a href="#">to load</a></li>
-			  <li><a href="#">color palettes</a></li>
-			  <li><a href="#">from database.</a></li>
-			</ul>
-			<span class="glyphicon glyphicon-refresh"></span>
-		  </div>
-		</div>-->
 		
 		<div class="form-group">
 		  <label for="path">Notes for web developer:</label>
@@ -272,8 +286,8 @@
 		 </div>
 
 		<div class="col-md-12">
-		<button id="clientPDF" class="btn btn-default cpBrand">Generate Client PDF</button>
-		<div id="prepSubmit" class="btn btn-default cpBrand">Submit Form</di>
+		<div id="prepSubmit" class="btn btn-default cpBrand">Save Entry</div>
+		<div id="prepClear" class="btn btn-default clear ">New Entry</div>
 		
 	  </form>
 		</div>
@@ -296,20 +310,118 @@
 		</div>
 		<div class="modal-footer">
 		  <button type="button" class="btn btn-default cpBrand" data-dismiss="modal">Close</button>
-		  <button type="button" class="btn btn-primary ">Load Client</button>
+		  <button type="button" class="btn btn-primary" onclick="deleteClient()">Delete Entry</button>
+		  <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="loadClient()">Load Entry</button>
+		</div>
+	  </div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div id="teamModal" class="modal fade" tabindex="-1" role="dialog">
+	<div class="modal-dialog" role="document">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		  <h4 class="modal-title">Choose a team member from the list below:</h4>
+		</div>
+		<div class="modal-body">
+		  <p>Select a client from the list below:</p>
+		  <table class="table" id="team">
+			
+		  </table>
+		</div>
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-default cpBrand" data-dismiss="modal">Close</button>
+		  <button type="button" class="btn btn-default pull-left" onclick="addTeam()">New Team Member</button>
+		  <button type="button" class="btn btn-default pull-left" onclick="deleteTeam()">Delete Team Member</button>
+		  <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="chooseTeam()">Select</button>
 		</div>
 	  </div><!-- /.modal-content -->
 	</div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
 
+<div id="colorModal" class="modal fade" tabindex="-1" role="dialog">
+	<div class="modal-dialog" role="document">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		  <h4 class="modal-title">Choose a team member from the list below:</h4>
+		</div>
+		<div class="modal-body">
+		  <p>Select a color palette from the list below:</p>
+		  <table class="table" id="clientColorList">
+			
+		  </table>
+		</div>
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-default cpBrand" data-dismiss="modal">Close</button>
+		  <button type="button" class="btn btn-default pull-left" data-dismiss="modal" onclick="showColor()">New Color Palette</button>
+		  <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="choosePalette()">Select</button>
+		</div>
+	  </div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
+<script src="js/prepHandoff.js"></script>
 <script>
+	$(document).ready(function(){
+		$('#handoffForm').on('keyup keypress', function(e) {
+			var keyCode = e.keyCode || e.which;
+			if (keyCode === 13) { 
+			  e.preventDefault();
+			  return false;
+			}
+		  });
+		
+		$('#colorPalette a').click(function(event){
+			event.preventDefault();
+		});
+		
 		$('#saveClient').click(function(event){
 			submitForm();
 		});
 		$('#prepSubmit').click(function(event){
 			submitForm();
+		});
+		
+		$('#prepClear').click(function(){
+			$('#prepHandoff').load("prepHandoff.html");
+		});
+		
+		$('#prepClear2').click(function(){
+			$('#prepHandoff').load("prepHandoff.html");
+		});
+		
+		$('#teamInputs input').focus(function(event){
+			console.log(this);
+			loadTeam();
+			$('#teamModal').modal('show'); 
+			currentInput = this;
+		});
+		
+		$('table').on('click', "tr:not(:first-child)", function(){
+		if ( $(this).hasClass('active') ) {
+		   $(this).toggleClass('active');
+	   }
+	   else {
+	   $('table tr').removeClass('active');
+	   $(this).toggleClass('active');
+	   }
+	      
+	});
+		
+		function activateTable(){
+	$('table').on('click', "tr:not(:first-child)", function(){
+		if ( $(this).hasClass('active') ) {
+		   $(this).toggleClass('active');
+	   }
+	   else {
+	   $('table tr').removeClass('active');
+	   $(this).toggleClass('active');
+	   }
+	});
+}
 		});
 	
 </script>

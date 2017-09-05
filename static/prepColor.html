@@ -1,0 +1,246 @@
+<!--Color picker control panel-->
+<div id="colorPicker">
+	
+	<!--<button value="Load Color Palette" data-placement="bottom" class="cpBrand" onclick="loadClientList()">Load Color Palette</button>-->
+	<!--<button value="Save Color Palette" data-placement="bottom" class="cpBrand" onclick="savePalette()">Save Color Palette</button>-->
+	
+	<form id="colorForm">
+	<h2 data-toggle="tooltip" title="Client state/city info.">Client:</h2>
+	<input type="text" id="stCity" name="client" value="ST-City" class="cpData" />
+	
+	<h2 data-toggle="tooltip" title="Designer responsible for prepping this site.">Prep Designer:</h2>
+	<input type="text" id="prepName" name="prepName" value="Designer name" class="cpData"/>
+	
+	<h2>Module Colors:</h2>
+	
+	<div id="col1" class="col">
+		
+		<label class="first" for="cp1" data-toggle="tooltip" title="Module layout background">Color 1:</label>
+		<input type="text" id="color1" name="color1" class="colorInput" value="#E3E3E2" />
+		<input type="color" value="#E3E3E2" id="cp1" />
+
+		<label class="" for="cp2" data-toggle="tooltip" title="Module layout background">Color 2:</label>
+		<input type="text" id="color2" name="color2" class="colorInput" value="#F4F4F3" />
+		<input type="color" value="#F4F4F3" id="cp2" />
+		
+		<label class="" for="cp3" data-toggle="tooltip" title="Module layout background">Color 3:</label>
+		<input type="text" id="color3" name="color3" class="colorInput" value="#114A61" />
+		<input type="color" value="#114A61" id="cp3" />
+
+		<label class="" for="cp4" data-toggle="tooltip" title="Module layout background">Color 4:</label>
+		<input type="text" id="color4" name="color4" class="colorInput" value="#E3E3E2" />
+		<input type="color" value="#E3E3E2" id="cp4" />
+
+		<label class="" for="cp5" data-toggle="tooltip" title="Module layout background">Color 5:</label>
+		<input type="text" id="color5" name="color5" class="colorInput" value="#F4F4F3" />
+		<input type="color" value="#F4F4F3" id="cp5" />
+		
+		<label class="" for="cp6" data-toggle="tooltip" title="Module layout background, typically dark">Color 6:</label>
+		<input type="text" id="color6" name="color6" class="colorInput" value="#727525" />
+		<input type="color" value="#727525" id="cp6" />
+		
+		<label class="" for="cp7" data-toggle="tooltip" title="Reversed-out heading; sits on Color 6">Color 7:</label>
+		<input type="text" id="color7" name="color7" class="colorInput" value="#FFFFFF" />
+		<input type="color" value="#FFFFFF" id="cp7" />
+
+	</div>
+	
+	<div id="col2" class="col">
+		<label class="first" for="cp8" data-toggle="tooltip" title="Reversed-out text; sits on Color 6">Color 8:</label>
+		<input type="text" id="color8" name="color8" class="colorInput" value="#FFFFFF" />
+		<input type="color" value="#FFFFFF" id="cp8" />
+		
+		<label class="" for="cp9" data-toggle="tooltip" title="Reversed-out links; sits on Color 6">Color 9:</label>
+		<input type="text" id="color9" name="color9" class="colorInput" value="#DCFFDA" />
+		<input type="color" value="#DCFFDA" id="cp9" />
+
+		<label class="" for="cp10" data-toggle="tooltip" title="Reversed-out HR; sits on Color 6">Color 10:</label>
+		<input type="text" id="color10" name="color10" class="colorInput" value="#5C591F" />
+		<input type="color" value="#5C591F" id="cp10" />
+
+		<label class="" for="cp11" data-toggle="tooltip" title="HR for modules (instead of Page Title)">Color 11:</label>
+		<input type="text" id="color11" name="color11" class="colorInput" value="#444444" />
+		<input type="color" value="#444444" id="cp11" />
+		
+		<label class="" for="cp12" data-toggle="tooltip" title="Secondary text">Color 12:</label>
+		<input type="text" id="color12" name="color12" class="colorInput" value="#494949" />
+		<input type="color" value="#494949" id="cp12" />
+		
+		<label class="first" for="cp13" data-toggle="tooltip" title="Headline for modules; same as headline (instead of Page Title)">Color 13:</label>
+		<input type="text" id="color13" name="color13" class="colorInput" value="#333333" />
+		<input type="color" value="#333333" id="cp13" />
+	</div>
+	
+	<div style="clear: both"></div>
+	
+	<h2>Text Colors:</h2>
+	<div id="col3" class="col">
+		<label class="first" for="cp14" data-toggle="tooltip" title="Module layout background">Headline:</label>
+		<input type="text" id="color14" name="color14" class="colorInput" value="#333333" />
+		<input type="color" value="#333333" id="cp14" />
+		
+		<label class="" for="cp15" data-toggle="tooltip" title="Module layout background">Subhead 1:</label>
+		<input type="text" id="color15" name="color15" class="colorInput" value="#54292B" />
+		<input type="color" value="#54292B" id="cp15" />
+
+		<label class="" for="cp16" data-toggle="tooltip" title="Module layout background">Subhead 2:</label>
+		<input type="text" id="color16" name="color16" class="colorInput" value="#727525" />
+		<input type="color" value="#727525" id="cp16" />
+	</div>
+									
+	<div id="col4" class="col">
+		<label class="first" for="cp17" data-toggle="tooltip" title="Module layout background">Content Text:</label>
+		<input type="text" id="color17" name="color17" class="colorInput" value="#33333" />
+		<input type="color" value="#333333" id="cp17" />
+		
+		<label class="" for="cp18" data-toggle="tooltip" title="Module layout background">Hyperlink:</label>
+		<input type="text" id="color18" name="color18" class="colorInput" value="#9B4321" />
+		<input type="color" value="#9B4321" id="cp18" />
+		
+		<label class="" for="cp19" data-toggle="tooltip" title="Module layout background">Subtext:</label>
+		<input type="text" id="color19" name="color19" class="colorInput" value="#114A61" />
+		<input type="color" value="#114A61" id="cp19" />
+	</div>
+	<div style="clear: both"></div>		
+	
+	<br/>
+	<div id="formSubmit">
+	<input id="savePDF" type="button"  value="Save Palette" onclick="savePalette()"></input>
+	<input id="savePDF" type="button"  value="Export PDF" onclick="savePDF()"></input>
+	<!--<input id="exportColor" type="button" value="List Colors" onclick="exportCPcolor()"></input>-->
+	<input id="resetColor" type="button"  value="Return" onclick="showHandoff()"></input>
+	
+	
+	
+	</div>
+</form>
+</div>
+
+<!--Color palette application examples-->
+<div id="examples">
+	
+	
+	<div id="interfaceA">
+		<h2>Module examples:</h2>
+		<div id="interface1">
+			
+			<div id="interface4"> <p id="interface13">Color 13</p></div>
+			
+			<div id="interface6" class="interface6">
+				<h1 class="interface7">Headline Color 7</h1>
+				<p class="interface8">Text Color 8</p>
+				<a class="interface9">Link Color 9</a>
+				<br /><br />
+				<hr class="interface10"/>
+				<hr class="interface10"/>
+				<hr class="interface10"/>
+				
+			</div>
+			
+			<div id="interface5">
+				<p id="interface12">Color 12</p>
+			
+			<hr class="interface11"/>
+			<hr class="interface11"/>
+			<hr class="interface11"/>
+			</div>
+			
+
+			<div id="interface2">
+				<div id="interface3"></div>
+			</div>
+		
+		</div>
+	</div>
+		
+	<div id="contrastCheckContainer">
+		<h2>ADA Contrast checks:</h2>
+		<div class="contrastCheck interface4" id="contrast1"> <p class="headlineText">Headline</p> </div>
+		<div class="contrastCheck interface5" id="contrast2"> <p class="contentText">Text</p> </div>
+		<div class="contrastCheck interface4" id="contrast3"> <p class="link">Link</p> </div>
+		<div class="contrastCheck interface6" id="contrast4"> <p class="interface7">Color 7</p> </div>
+		<div class="contrastCheck interface6" id="contrast5"> <p class="interface8">Color 8</p> <hr class="interface10"/></div>
+		<div class="contrastCheck interface6" id="contrast6"> <p class="interface9">Color 9</p> </div>					
+	</div>
+	
+	
+	<div id="textInterface">
+	<h2 style="clear:both">Text example:</h2>
+		<h1>Example headline</h1>
+		<h2 class="sub1">Subhead one</h2>
+		<h2 class="sub2">Subhead two</h2>
+		<p id="interface17">This is an example of content text with a <a href=#">hyperlink</a> on a page.</p>
+		<hr class="interface11" />
+		<p id="interface19" class="subtext">This is example of module subtext. </p>
+	</div>
+	
+	<div id="tableContainer">
+		<h2>Table example:</h2>
+		<table class="table table-striped" id="tableInterface">
+			
+			<tr>
+				<th>One</th>
+				<th>Two</th>
+				<th>Three</th>
+				<th>Four</th>
+			</tr>
+			<tr>
+				<th>One</td>
+				<td>Two</td>
+				<td>Three</td>
+				<td>Four</td>
+			</tr>
+			<tr>
+				<th>One</td>
+				<td>Two</td>
+				<td>Three</td>
+				<td>Four</td>
+			</tr>
+			<tr>
+				<th>One</td>
+				<td>Two</td>
+				<td>Three</td>
+				<td>Four</td>
+			</tr>					
+		</table>
+	</div>
+</div>
+</div>
+
+<!--Buttons for load modal
+<button value="Delete Palette" title="Load Palette" onclick="deletePalette()">Delete Palette</button>
+<button value="Load Palette" title="Load Palette" onclick="loadClientPalette()">Load Palette</button>-->
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+	<div class="modal-content">
+	  <div class="modal-header">
+		<h5 class="modal-title" id="exampleModalLabel">Success</h5>
+		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		  <span aria-hidden="true">&times;</span>
+		</button>
+	  </div>
+	  <div class="modal-body">
+		Your color palette has been saved.
+	  </div>
+	  <div class="modal-footer">
+		<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+	  </div>
+	</div>
+  </div>
+</div>
+
+
+
+<script>	
+$(document).ready(function(){
+
+});
+</script>
+
+<!--CP Color Palette-->
+<script src="js/cpColor.js"></script>
+
+<!--Tota11y-->
+<!--<script src="js/tota11y.min.js"></script>-->

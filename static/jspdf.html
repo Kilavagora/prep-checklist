@@ -66,93 +66,19 @@
       </ul>
 			</div>
 			
-			<div id="prepTools">
-				
-			<!--<div class="container" id="prepSplash">
-				<img src="images/prepSplash.png" alt="Illustration of web design process elements">
-				<br/><br/><br/>
-				<h4>Select a tool below to continue:</h4>
-				<button class="btn btn-default btn-lg" id="guide2">Prep Guide</button>
-				<button class="btn btn-default btn-lg" id="color2">Color Palette Tool</button>
-				<button class="btn btn-default btn-lg" id="prep2">Prep Hand-off Form</button>
-			</div>-->
-			
-			<div id="prepGuide">
-				<!--content loads through javascript-->
-			</div>
-
-			<div id="prepColor">
-				<!--content loads through javascript-->
-			</div>
-			
-			<div id="prepHandoff">
-				<!--content loads through javascript-->
-			</div>
-			
+			<div id="jsPdf">
+				<button onclick="makePDF()"></button>
 			</div>
 			
 		<script>
 			
-$('body').fadeIn();
-
-$('#prepGuide').load("prepGuide.html");
-$('#prepHandoff').load("prepHandoff.html");
-$('#prepColor').load("prepColor.html");
-
-$('#prepSplash').hide();
-$('#prepGuide').hide();
-//$('#prepHandoff').hide();
-$('#prepColor').hide();
-
-function showGuide() {
-	$('#prepSplash').slideUp();
-	$('#prepHandoff').slideUp();
-	$('#prepColor').slideUp();
-	$('#prepGuide').slideDown();
-}
-
-function showColor() {
-	$('#prepSplash').slideUp();
-	$('#prepHandoff').slideUp();
-	$('#prepGuide').slideUp();
-	$('#prepColor').slideDown();
-}
-
-function showHandoff() {
-	$('#prepSplash').slideUp();
-	$('#prepGuide').slideUp();
-	$('#prepColor').slideUp();
-	$('#prepHandoff').slideDown();
-}
-
-
-$('#guide').click(function(){
-	showGuide();
-});
-
-$('#guide2').click(function(){
-	showGuide();
-});
-
-$('#prep').click(function(){
-	showHandoff();
-});
-
-$('#prep2').click(function(){
-	showHandoff();
-});
-
-$('#color').click(function(){
-	showColor();
-});
-
-$('#color2').click(function(){
-	showColor();
-});
-
 
 		</script>
+		function makePDF() {
+			
 		
+		
+		}
 		
 		</body>
 	</html>

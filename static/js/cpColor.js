@@ -1,24 +1,9 @@
-// Declare global variables
-var cp1 = document.getElementById("cp1");
-var cp2 = document.getElementById("cp2");
-var cp3 = document.getElementById("cp3");
-var cp3 = document.getElementById("cp4");
-var cp5 = document.getElementById("cp5");
-var cp6  = document.getElementById("cp6");
-var cp7  = document.getElementById("cp7");
-var cp8 = document.getElementById("cp8");
-var cp9 = document.getElementById("cp9");
-var cp10 = document.getElementById("cp10");
-var cp12 = document.getElementById("cp11");
-var cp12 = document.getElementById("cp12");
-var cp13 = document.getElementById("cp13");
-var cp14 = document.getElementById("cp14");
-var cp15 = document.getElementById("cp15");
-var cp16 = document.getElementById("cp16");
-var cp17 = document.getElementById("cp17");
-var cp18 = document.getElementById("cp18");
-var cp19 = document.getElementById("cp19");
+// Global variables
+let colorArray = [];
+//let clientList = {};
+let currentPalette = {};
 
+//Color text input variables
 var ct1 = document.getElementById("color1");
 var ct2 = document.getElementById("color2");
 var ct3 = document.getElementById("color3");
@@ -39,30 +24,10 @@ var ct17 = document.getElementById("color17");
 var ct18 = document.getElementById("color18");
 var ct19 = document.getElementById("color19");
 
-var c1 = "";
-var c2 = "";
-var c3 = "";
-var c4 = "";
-var c5 = "";
-var c6 = "";
-var c7 = "";
-var c8 = "";
-var c9 = "";
-var c10 = "";
-var c11 = "";
-var c12 = "";
-var c13 = "";
-var c14 = "";
-var c15 = "";
-var c16 = "";
-var c17 = "";
-var c18 = "";
-var c19 = "";
+//Defaults
+let defaultColor = "#fffff";
 
 //Color 1
-var cp1 = document.getElementById("cp1");
-var defaultColor = "#0000ff";
-
 window.addEventListener("load", color1, false);
 window.addEventListener("load", colorText1, false);
 
@@ -79,6 +44,7 @@ function updateColor1(event) {
             exportCPcolor();
             document.getElementById("color1").value = cp1.value;
             document.getElementById("color4").value = cp1.value;
+            $(".interface4").css("background-color", cp4.value);
             cp4.value = cp1.value;
             //color4();
 }
@@ -119,8 +85,9 @@ function updateColor2(event) {
           $("#interface5").css("background-color", cp2.value);
           $('#examples table.table tr:nth-child(2)').css("background-color", cp2.value);
           $('#examples table.table tr:nth-child(4)').css("background-color", cp2.value);
-          document.getElementById("color2").value = cp1.value;
-            document.getElementById("color5").value = cp1.value;
+          document.getElementById("color2").value = cp2.value;
+            document.getElementById("color5").value = cp2.value;
+            $(".interface5").css("background-color", cp5.value);
           cp5.value = cp2.value;
 }
 
@@ -134,16 +101,14 @@ function colorText2() {
 function updateColorText2() {
             if (ct2.value[0] == "#" ){
             cp2.value = ct2.value;
-            cp5.value = ct2.value;}
+            cp5.value = ct2.value;
+            }
             else if (ct2.value[0] != "#" ){
             ct2.value = "#" + ct2.value;
             cp2.value = ct2.value;
             cp5.value = ct2.value;
-            }
-            
+            }        
             updateColor2();
-            
-            //cp2.value = ct2.value;
 }
 
 
@@ -196,9 +161,12 @@ function color4() {
           }
 
 function updateColor4(event) {
+            $('#examples table.table tr:nth-child(1)').css("background-color", cp1.value);
+            $('#examples table.table tr:nth-child(3)').css("background-color", cp1.value);            
           $("#interface4").css("background-color", cp4.value);
           document.getElementById("color4").value = cp4.value;
           document.getElementById("color1").value = cp4.value;
+          $(".interface4").css("background-color", cp4.value);
           cp1.value = cp4.value;
 }
 
@@ -236,9 +204,9 @@ function color5() {
           }
 
 function updateColor5(event) {
-          $("#interface4").css("background-color", cp5.value);
           document.getElementById("color5").value = cp5.value;
           document.getElementById("color2").value = cp5.value;
+          $(".interface5").css("background-color", cp5.value);
           cp2.value = cp5.value;
 }
 
@@ -275,7 +243,9 @@ function color6() {
           }
 
 function updateColor6(event) {
-          $("#interface6").css("background-color", cp6.value);
+            document.getElementById("color6").value = cp6.value;
+          //$("#interface6").css("background-color", cp6.value);
+          $(".interface6").css("background-color", cp6.value);
 }
 
 function colorText6() {
@@ -307,7 +277,8 @@ function color7() {
           }
 
 function updateColor7(event) {
-          $("#interface4").css("background-color", cp7.value);
+            document.getElementById("color7").value = cp7.value;
+          $(".interface7").css("color", cp7.value);
 }
 
 function colorText7() {
@@ -339,7 +310,8 @@ function color8() {
           }
 
 function updateColor8(event) {
-          $("#interface4").css("background-color", cp8.value);
+            document.getElementById("color8").value = cp8.value;
+          $(".interface8").css("color", cp8.value);
 }
 
 function colorText8() {
@@ -372,7 +344,8 @@ function color9() {
           }
 
 function updateColor9(event) {
-          $("#interface9").css("color", cp9.value);
+            document.getElementById("color9").value = cp9.value;
+          $(".interface9").css("color", cp9.value);
 }
 
 
@@ -406,7 +379,8 @@ function color10() {
           }
 
 function updateColor10(event) {
-          $("#interface4").css("background-color", cp10.value);
+            document.getElementById("color10").value = cp10.value;
+          $(".interface10").css("border-color", cp10.value);
 }
 
 function colorText10() {
@@ -438,7 +412,8 @@ function color11() {
           }
 
 function updateColor11(event) {
-          $("#interface4").css("background-color", cp11.value);
+            document.getElementById("color11").value = cp11.value;
+          $(".interface11").css("border-color", cp11.value);
 }
 
 
@@ -472,7 +447,12 @@ function color12() {
           }
 
 function updateColor12(event) {
-          $("#interface4").css("background-color", cp12.value);
+            document.getElementById("color12").value = cp12.value;
+            document.getElementById("color19").value = cp19.value;
+            document.getElementById("color12").value = cp19.value;
+            cp19.value = cp12.value;
+          $("#textInterface .subtext").css("color", cp19.value);
+          $("#interface12").css("color", cp12.value);
 }
 
 function colorText12() {
@@ -504,7 +484,14 @@ function color13() {
           }
 
 function updateColor13(event) {
-          $("#interface4").css("background-color", cp13.value);
+            document.getElementById("color13").value = cp13.value;
+            document.getElementById("color14").value = cp13.value;
+            document.getElementById("cp14").value = cp13.value;
+            $("#textInterface h1").css("color", cp14.value);
+          $("p.headlineText").css("color", cp13.value);
+            $("#interface13").css("color", cp13.value);
+            cp14.value = cp13.value;
+          
 }
 
 function colorText13() {
@@ -519,6 +506,7 @@ function updateColorText13() {
             else if (ct13.value[0] != "#" ){
             ct13.value = "#" + ct13.value;
             cp13.value = ct13.value;
+            cp14.value = ct13.value;
             }
             
             updateColor13();
@@ -536,7 +524,12 @@ function color14() {
           }
 
 function updateColor14(event) {
+            document.getElementById("color14").value = cp14.value;
           $("#textInterface h1").css("color", cp14.value);
+          $("p.headlineText").css("color", cp13.value);
+          $("#interface13").css("color", cp13.value);
+          document.getElementById("color13").value = cp13.value;
+          cp13.value = cp14.value;
 }
 
 
@@ -552,6 +545,7 @@ function updateColorText14() {
             else if (ct14.value[0] != "#" ){
             ct14.value = "#" + ct14.value;
             cp14.value = ct14.value;
+            cp13.value = ct14.value;
             }
             
             updateColor14();
@@ -570,6 +564,7 @@ function color15() {
           }
 
 function updateColor15(event) {
+            document.getElementById("color15").value = cp15.value;
           $("#textInterface h2.sub1").css("color", cp15.value);
 }
 
@@ -604,6 +599,7 @@ function color16() {
           }
 
 function updateColor16(event) {
+            document.getElementById("color16").value = cp16.value;
           $("#textInterface h2.sub2").css("color", cp16.value);
 }
 
@@ -638,7 +634,9 @@ function color17() {
           }
 
 function updateColor17(event) {
+            document.getElementById("color17").value = cp17.value;
           $("#textInterface p").css("color", cp17.value);
+            $("p.contentText").css("color", cp17.value);
 }
 
 function colorText17() {
@@ -670,7 +668,9 @@ function color18() {
           }
 
 function updateColor18(event) {
+            document.getElementById("color18").value = cp18.value;
           $("#textInterface a").css("color", cp18.value);
+          $("#contrast3 p.link").css("color", cp18.value);
 }
 
 function colorText18() {
@@ -702,6 +702,10 @@ function color19() {
           }
 
 function updateColor19(event) {
+            document.getElementById("color19").value = cp19.value;
+            document.getElementById("color12").value = cp19.value;
+            cp12.value = cp19.value;
+            $("#interface12").css("color", cp12.value);
           $("#textInterface .subtext").css("color", cp19.value);
 }
 
@@ -719,55 +723,166 @@ function updateColorText19() {
             ct19.value = "#" + ct19.value;
             cp19.value = ct19.value;
             }
-            
             updateColor19();
 }
 
-
-
-function applyColor1(color) {
-            //pass in color
-            //set example elements to color that color.
-}
-
-
-
-
-function makeUL(){
-            color = "";
-            colorList = "";
-            for (var i = 0; color = colorArray[i]; i++) {
-                        if (i == 13) {colorList +=  "<li>" + "H1: " + color + "</li>";}
-                                    else if (i == 14) {colorList +=  "<li>" + "H2-1: " + color + "</li>";}
-                                                else if (i == 15) {colorList +=  "<li>" + "H2-2: " + color + "</li>";}
-                                                            else if (i == 16) {colorList +=  "<li>" + "P: " + color + "</li>";}
-                                                                        else if (i == 17) {colorList +=  "<li>" + "A: " + color + "</li>";}
-                                                                                    else if (i == 18) {colorList +=  "<li>" + "Sub: "  + color + "</li>";}
-                                    else{colorList +=  "<li>" + (i + 1) + " : " + color + "</li>";}
-                        }
-            document.getElementById('colorList').innerHTML = "";
-            document.getElementById('colorList').innerHTML = colorList;
-}
-
-let colorArray = [];
-
 function exportCPcolor() {		
-            colorArray = [];
-            for (i=1; i<20; i++) {
-                        colorArray.push(document.getElementById("color"+i).value);
-                        }
-            makeUL(colorArray);
+            let colorArray = [];
+            colorArray = $('#colorForm').serializeArray()
+            let json = {};
+            $.each(colorArray, function() {
+		json[this.name] = this.value || '';
+	});
+            return json;
 }
-            
-
 
 function colorReset() {
-            location.reload();
+            //reset div load
+            //location.reload();
 }
 
+
+
+function savePalette() {
+	saveClientPalette(toJSON($('#colorForm')));
+}
+	
+	
+function saveClientPalette(clientData) {
+	let oReq = new XMLHttpRequest();
+	oReq.open("POST", "api/color");
+	oReq.setRequestHeader("Content-Type","application/json");
+	oReq.onload = function() {
+                        //
+	}
+	let payload = JSON.stringify(clientData);
+            console.log(payload);
+	oReq.send(payload);
+}
+
+function loadClientList(e) {
+            currentInput = e;
+            //open modal
+            let oReq = new XMLHttpRequest();
+	oReq.open("GET", "/api/color");
+	oReq.setRequestHeader("Content-Type","application/json");
+	oReq.onload = function() {
+		let c = JSON.parse(this.responseText);
+                        console.log(c);
+		$('#clientColorList').html("<tr><th onclick='sortTable(0)'>Client</th><th onclick='sortTable(0)'>Date Created</th><th onclick='sortTable(0)'>ID</th></tr>");
+		for (let i=0; i<c.length; i++) {
+                                    $('#clientColorList').append("<tr><td>" + c[i].client + "</td>" + "<td>" + c[i].prepName + "</td>" + "<td class='id'>" + c[i]._id + "</td></tr>");
+		}
+                        colorList = c;
+                        
+	}
+	oReq.send();
+}
+
+loadClientList();
+
+function loadColorForm(e) {
+	let oReq = new XMLHttpRequest();
+	oReq.open("GET", "/api/clients/"+e);
+	oReq.setRequestHeader("Content-Type","application/json");
+	oReq.onload = function() {
+		let colorArray = JSON.parse(this.responseText);
+		for(var id in colorArray) {
+			$('input#' + id).val( clientsArray[id] );
+			$('input[type=color]#' + id).attr( "checked", clientsArray[id]);
+                        
+		}
+	}
+   oReq.send();
+}
+
+
+function choosePalette(e) {
+	let id = $('#clientColorList tr.active td.id')[0].innerHTML;
+            $('#colorPalettePreview').html("");
+            loadColorPalette(id);
+            $('#colorPalettePreview').fadeIn("");
+}
+
+function loadColorPalette(e) {
+	let oReq = new XMLHttpRequest();
+	oReq.open("GET", "/api/color/"+e);
+	oReq.setRequestHeader("Content-Type","application/json");
+	oReq.onload = function() {
+		let clientsArray = JSON.parse(this.responseText);
+		for(var id in clientsArray) {
+                                    $('#clientPalette').val(e);
+                                    console.log(clientsArray[id].charAt(0));
+                        	if (clientsArray[id].charAt(0) == "#"){
+                                                $('#colorPalettePreview').append('<a data-toggle="tooltip" data-placement="top" data-original-title="' + clientsArray[id] + '"><div class="colorThumb" style="background-color:' + clientsArray[id] +'"></div></a>');
+                        	}
+                        }
+		currentClient = clientsArray;
+                        $('[data-toggle="tooltip"]').tooltip({placement: 'top'});
+	}
+   oReq.send();
+}
+
+//other functions
+function setColor() {
+            color1();
+            color2();
+            color3();
+            color4();
+            color5();
+            color6();
+            color7();
+            color8();
+            color9();
+            color10();
+            color11();
+            color12();
+            color13();
+            color14();
+            color15();
+            color16();
+            color17();
+            color18();
+            color19();
+            updateColorText1();
+            updateColorText2();
+            updateColorText3();
+            updateColorText4();
+            updateColorText5();
+            updateColorText6();
+            updateColorText7();
+            updateColorText8();
+            updateColorText9();
+            updateColorText10();
+            updateColorText11();
+            updateColorText12();
+            updateColorText13();
+            updateColorText14();
+            updateColorText15();
+            updateColorText16();
+            updateColorText17();
+            updateColorText18();
+            updateColorText19();
+}
+
+
+function deletePalette(){
+            let deadPalette = $("#clientList table tr.active td:first-child").text();
+            //confirm with user
+            //gather id from table
+            //remove from db
+            //refresh color list
+}
+
+function firstLoadColor() {
+            setColor();
+            //buildPaletteObj();
+}
+
+//jsPDF - Color Palette PDF
 function savePDF() {
             exportCPcolor();
-            var imgData = 'data:image/png;base64,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';
+            //var imgData = 'data:image/png;base64,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';
             
             //create new PDF object
             var doc = new jsPDF({
@@ -787,22 +902,22 @@ function savePDF() {
             var prep = $("#prepName").val();
             
             //Assemble PDF
-            doc.addImage(imgData, 'PNG', 1, 1, .25, .195);
+            //doc.addImage(imgData, 'PNG', 1, 1, .25, .195);
             doc.setFontSize(16);
-            doc.text(stCity, 1.35, 1.14);
+            doc.text(stCity, 1, 1.14);
             doc.setFontSize(8);
             doc.text("Site prep by: " + prep, 1, 1.4);
             doc.setFontSize(10);
             
             for(i=0; i< colorArray.length ;i++) {
-                        if (i == 13) {doc.text("Headline " + ": " + colorArray[i],1.2, 2+(i/2.25));}
-                        else if (i == 14) {doc.text("Subhead 1 " +  ": " + colorArray[i],1.2, 2+(i/2.25));}
-                        else if (i == 15) {doc.text("Subhead 2 " + ": " + colorArray[i],1.2, 2+(i/2.25));}
-                        else if (i == 16) {doc.text("Content Text " + ": " + colorArray[i],1.2, 2+(i/2.25));}
-                        else if (i == 17) {doc.text("Hyperlink " + ": " + colorArray[i],1.2, 2+(i/2.25));}
-                        else if (i == 18) {doc.text("Subtext " + ": " + colorArray[i],1.2, 2+(i/2.25));}
+                        if (i == 13) {doc.text("Headline " + ": " + colorArray[i],1.8, (2.15+(i/2.25)));}
+                        else if (i == 14) {doc.text("Subhead 1 " +  ": " + colorArray[i],1.8, (2.15+(i/2.25)));}
+                        else if (i == 15) {doc.text("Subhead 2 " + ": " + colorArray[i],1.8, (2.15+(i/2.25)));}
+                        else if (i == 16) {doc.text("Content Text " + ": " + colorArray[i],1.8, (2.15+(i/2.25)));}
+                        else if (i == 17) {doc.text("Hyperlink " + ": " + colorArray[i],1.8, (2.15+(i/2.25)));}
+                        else if (i == 18) {doc.text("Subtext " + ": " + colorArray[i],1.8, (2.15+(i/2.25)));}
                         else{
-                        doc.text("Color " + (i + 1) + ": " + colorArray[i],1.2, 2+(i/2.25));
+                        doc.text("Color " + (i + 1) + ": " + colorArray[i],1.8, (2.15+(i/2.25)));
                         }
                         
                         let fillColor = document.getElementById("color" + (i+1)).value;
@@ -816,8 +931,10 @@ function savePDF() {
                                     } : null;
                                 }
                         let rgbColor = hexToRgb(fillColor);
-                        doc.setDrawColor(rgbColor.r,rgbColor.g,rgbColor.b);
-                        doc.rect(.75, (1.89+(i/2.25)), .125, .125, 'D');
+                        doc.setDrawColor(0,0,0);
+                        doc.setLineWidth(.0125);
+                        doc.setFillColor(rgbColor.r,rgbColor.g,rgbColor.b);
+                        doc.rect(.95, (1.89+(i/2.25)), .75, .4, 'FD');
                         
                         //doc.fromHTML($('body').get(0), .1, .1, {
                         //'width': 170
@@ -826,20 +943,27 @@ function savePDF() {
             doc.save(stCity + '-ColorPalette.pdf');
 }
 
+			
+//$('table').on('click', "tr:not(:first-child)", function(){
+//            if ( $(this).hasClass('active') ) {
+//                       $(this).toggleClass('active');
+//           }
+//           else {
+//           $('#clientList table tr').removeClass('active');
+//           $(this).toggleClass('active');
+//           }
+//});
 
 
-function jsonExport() {
-                        exportCPcolor();        
-                        let stCitySQL = $("#stCity").val();
-                        console.log(stCitySQL);
-                        let prepNameSQL = $("#prepName").val();
-                        
-                                                
-                        $.post( "colorData.php", {stCity: stCitySQL, prepName: prepNameSQL, colorData: JSON.stringify(colorArray)} );
-                        //$("#tableBox").load("loadColorList.php");
-                        $('#myModal').modal('show');
-}
+$('[data-toggle="tooltip"]').tooltip({placement: 'left'});
+firstLoadColor();
+$('#colorListContainer').slideToggle();
+$('#clientList').hide();
 
+$('input').click(function() { $(this).select(); });
+
+
+//Table sorting script
 function sortTable(n) {
   var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
   table = document.getElementById("clientListTable");
@@ -895,197 +1019,7 @@ function sortTable(n) {
   }
 }
 
-function loadClientList() {
-            //$("#tableBox").load("loadColorList.php");
-            //sortTable();
-            $('#clientList').slideToggle();
+//Tota11y plug-in for ADA
+function loadTota11y() {
+            $('#examples').append("<script src='js/tota11y.min.js'></script>")
 }
-
-function loadClientPalette() {
-            var clientPalette = [];
-            $("#clientList table tr.active").each(function() {
-                //var arrayOfThisRow = [];
-                var tableData = $(this).find('td');
-                if (tableData.length > 0) {
-                    tableData.each(function() { clientPalette.push($(this).text()); });
-                }
-            });
-            
-            //console.log(clientPalette);
-            
-            
-            //var a = ['zero', 'one', 'two', 'three'];
-            //var sliced = a.slice(1, 3);
-            //
-            //console.log(a);      // ['zero', 'one', 'two', 'three']
-            //console.log(sliced); // ['one', 'two']
-            
-            
-            //var clientName = clientPalette.slice(1,2).toString();
-            //var designerName = clientPalette.slice(2,3).toString();
-            //var clientColor = clientPalette.splice(4, 1);
-            
-            let clientId = clientPalette.shift();
-            let clientName = clientPalette.shift();
-            let designerName = clientPalette.shift();
-            let clientColor = clientPalette.shift();
-            
-            
-            //console.log(clientId); 
-            //console.log(clientName);
-            //console.log(designerName);
-            //console.log(clientColor);
-            
-            //clientColor = clientColor.replace(/['"]+/g, '');
-            //clientColor = clientColor.replace(/[\[\]']+/g, '');
-            //console.log(clientColor); //
-            
-            let clientColorArray = JSON.parse(clientColor);
-            //console.log(clientColorArray);
-            
-            $("#stCity").val(clientName);
-            $("#prepName").val(designerName);
-            
-            
-            //for (let i=0; i<clientColorArray.length; i++){
-            //            let clientColor = clientColorArray[i];
-            //            let currentColor = "ct"+(i+1);
-            //            //console.log(currentColor);
-            //            currentColor.toString.value = clientColor;
-            //            console.log(clientColor);
-            //}
-            
-            
-            ct1.value = clientColorArray[1];
-            ct2.value = clientColorArray[1];
-            ct3.value = clientColorArray[2];
-            ct4.value = clientColorArray[3];
-            ct5.value = clientColorArray[4];
-            ct6.value = clientColorArray[5];
-            ct7.value = clientColorArray[6];
-            ct8.value = clientColorArray[7];
-            ct9.value = clientColorArray[8];
-            ct10.value = clientColorArray[9];
-            ct11.value = clientColorArray[10];
-            ct12.value = clientColorArray[11];
-            ct13.value = clientColorArray[12];
-            ct14.value = clientColorArray[13];
-            ct15.value = clientColorArray[14];
-            ct16.value = clientColorArray[15];
-            ct17.value = clientColorArray[16];
-            ct18.value = clientColorArray[17];
-            ct19.value = clientColorArray[18];
-            
-            setColor();
-            
-            $('#clientList').slideToggle();
-            
-            
-            
-            //let clientColor1 = clientColor.split();
-            //console.log(clientColor1);
-            //for (let i=0; i<20; i++) {
-            //            $('#cp' + i).colorpicker('setValue','#000');
-            //}
-}
-
-//other functions
-function setColor() {
-            updateColorText1();
-            updateColorText2();
-            updateColorText3();
-            updateColorText4();
-            updateColorText5();
-            updateColorText6();
-            updateColorText7();
-            updateColorText8();
-            updateColorText9();
-            updateColorText10();
-            updateColorText11();
-            updateColorText12();
-            updateColorText13();
-            updateColorText14();
-            updateColorText15();
-            updateColorText16();
-            updateColorText17();
-            updateColorText18();
-            updateColorText19();
-}
-
-
-function deletePalette(){
-            let deadPalette = $("#clientList table tr.active td:first-child").text();
-            //deadPalette = deadPalette.replace(/[^A-Z0-9]/ig, "");
-            //deadPalette = deadPalette.replace(/i/ig, "");
-            //deadPalette = deadPalette.replace(/d/ig, "");
-            //parseInt(deadPalette);
-            console.log(deadPalette);
-            $.post( "deletePalette.php", {deadRow: deadPalette} );
-            $("#tableBox").load('loadColorList.php');
-            //$("#tableBox").load("loadColorList.php");
-}
-
-function firstLoadColor() {
-            updateColorText1();
-            updateColorText2();
-            updateColorText3();
-            updateColorText4();
-            updateColorText5();
-            updateColorText6();
-            updateColorText7();
-            updateColorText8();
-            updateColorText9();
-            updateColorText10();
-            updateColorText11();
-            updateColorText12();
-            updateColorText13();
-            updateColorText14();
-            updateColorText15();
-            updateColorText16();
-            updateColorText17();
-            updateColorText18();
-            updateColorText19();
-            exportCPcolor();
-}
-
-$(document).ready(function(){			
-            // $('#tableBox table tr:not(:first-child)').click(function() {
-            //            if ( $(this).hasClass('active') ) {
-            //            	$(this).toggleClass('active');
-            //            }
-            //            else {
-            //            $('#clientList table tr').removeClass('active');
-            //            $(this).toggleClass('active');
-            //            }
-            //});
-            // 
-             
-             $('#tableBox').on('click', "tr:not(:first-child)", function(){
-                         if ( $(this).hasClass('active') ) {
-                        	$(this).toggleClass('active');
-                        }
-                        else {
-                        $('#clientList table tr').removeClass('active');
-                        $(this).toggleClass('active');
-                        }
-            });
-             
-             setInterval(function() {
-                        $("#tableBox").load('loadColorList.php');
-             }, 300000);
-             //
-
-            //$(document).click(function(e) 
-            //           {
-            //               var container = $("#clientList");
-            //           
-            //               // if the target of the click isn't the container nor a descendant of the container
-            //               if (!container.is(":visible") && container.has(e.target).length === 0) 
-            //               {
-            //                   container.slideToggle();
-            //               }
-            //});
-            
-            
-
-});
