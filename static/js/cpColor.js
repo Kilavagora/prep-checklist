@@ -1022,4 +1022,4 @@ function sortTable(n) {
 //Tota11y plug-in for ADA
 function loadTota11y() {
             $('#examples').append("<script src='js/tota11y.min.js'></script>")
-}
+} 

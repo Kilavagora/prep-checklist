@@ -6,9 +6,22 @@ let ObjectID = mongodb.ObjectID;
 const NOTES_COLLECTION = "clients";
 const TEAM_COLLECTION = "team";
 const COLOR_COLLECTION = "color";
+const nodemailer = require('nodemailer');
+
 
 let app = express();
 app.use(bodyParser.json());
+
+//Allow Cross Domain Posts
+var allowCrossDomain = function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+
+    next();
+}
+
+app.use(allowCrossDomain);
 
 // Static file server
 let staticDir = __dirname + "/static/";
@@ -338,4 +351,45 @@ app.delete("/api/color/:id", (req, res) => {
   }).catch((err) => {
     handleError(res, err.message, "Failed to delete color palette");
   });
+});
+
+
+//SMTP Service
+
+
+//// Generate test SMTP service account from ethereal.email
+//// Only needed if you don't have a real mail account for testing
+app.post('/api/mail', function (req, res) {
+  
+  console.log(req);
+  
+    // create reusable transporter object using the default SMTP transport
+    let transporter = nodemailer.createTransport({
+        host: 'secureus43.sgcpanel.com',
+        port: 465,
+        secure: true, // true for 465, false for other ports
+        auth: {
+            user: 'adam@adamelliott.com',
+            pass: 'AE4life3'
+        }
+    });
+
+    // setup email data
+    let mailOptions = {
+        from: '"CP Creative Services" <adam@adamelliott.com>', // sender address
+        to: 'adam@adamelliott.com', // list of receivers
+        subject: 'Hello', // Subject line
+        text: JSON.stringify(req.body.foo)// plain text body
+    };
+
+    // send mail with defined transport object
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            return console.log(error);
+        }
+        console.log('Message sent: %s', info.messageId);
+        transporter.close();
+        //res.status(status).send(body);
+        res.status(200).json(body);
+    });
 });

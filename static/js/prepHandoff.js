@@ -379,4 +379,20 @@ $(function () {
 	loadClients();
 
 });
+//
+//function sendMail(){
+//	//let transporter = nodemailer.createTransport(transport[defaults]);
+//	//let data = clientList;
+//	transporter.sendMail()
+//}
 
+
+
+
+function sendMail() {
+	let newClient = currentClient;
+	let payload = JSON.stringify(newClient);
+	console.log(payload);
+	$.post('api/mail', payload);
+}
+     

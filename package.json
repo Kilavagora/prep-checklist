@@ -6,7 +6,8 @@
   "dependencies": {
     "body-parser": "^1.17.2",
     "express": "latest",
-    "mongodb": "^2.2.30"
+    "mongodb": "^2.2.30",
+    "nodemailer": "^4.1.0"
   },
   "scripts": {
     "start": "node app.js",
