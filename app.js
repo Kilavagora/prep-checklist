@@ -13,12 +13,12 @@ let app = express();
 app.use(bodyParser.json());
 
 //Allow Cross Domain Posts
-var allowCrossDomain = function(req, res, next) {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-    res.header('Access-Control-Allow-Headers', 'Content-Type');
+var allowCrossDomain = function (req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
 
-    next();
+  next();
 }
 
 app.use(allowCrossDomain);
@@ -92,8 +92,8 @@ app.get("/api/clients/:id", (req, res) => {
   }
 
   db.collection(NOTES_COLLECTION).findOne({
-      _id: new ObjectID(id)
-    })
+    _id: new ObjectID(id)
+  })
     .then((doc) => {
       if (!doc) {
         handleError(res, "Id does not exist", "Not found :(", 404);
@@ -116,12 +116,12 @@ app.put("/api/clients/:id", (req, res) => {
 
   let updateDoc = req.body;
   delete updateDoc._id;
-  
+
   updateDoc.lastUpdated = new Date();
 
   db.collection(NOTES_COLLECTION).updateOne({
-      _id: new ObjectID(id)
-    }, updateDoc)
+    _id: new ObjectID(id)
+  }, updateDoc)
     .then((doc) => {
       updateDoc._id = req.params.id;
       res.status(200).json(updateDoc);
@@ -195,8 +195,8 @@ app.get("/api/team/:id", (req, res) => {
   }
 
   db.collection(TEAM_COLLECTION).findOne({
-      _id: new ObjectID(id)
-    })
+    _id: new ObjectID(id)
+  })
     .then((doc) => {
       if (!doc) {
         handleError(res, "Id does not exist", "Not found :(", 404);
@@ -221,8 +221,8 @@ app.put("/api/team/:id", (req, res) => {
   delete updateDoc._id;
 
   db.collection(TEAM_COLLECTION).updateOne({
-      _id: new ObjectID(id)
-    }, updateDoc)
+    _id: new ObjectID(id)
+  }, updateDoc)
     .then((doc) => {
       updateDoc._id = req.params.id;
       res.status(200).json(updateDoc);
@@ -296,8 +296,8 @@ app.get("/api/color/:id", (req, res) => {
   }
 
   db.collection(COLOR_COLLECTION).findOne({
-      _id: new ObjectID(id)
-    })
+    _id: new ObjectID(id)
+  })
     .then((doc) => {
       if (!doc) {
         handleError(res, "Id does not exist", "Not found :(", 404);
@@ -322,8 +322,8 @@ app.put("/api/color/:id", (req, res) => {
   delete updateDoc._id;
 
   db.collection(COLOR_COLLECTION).updateOne({
-      _id: new ObjectID(id)
-    }, updateDoc)
+    _id: new ObjectID(id)
+  }, updateDoc)
     .then((doc) => {
       updateDoc._id = req.params.id;
       res.status(200).json(updateDoc);
@@ -360,36 +360,41 @@ app.delete("/api/color/:id", (req, res) => {
 //// Generate test SMTP service account from ethereal.email
 //// Only needed if you don't have a real mail account for testing
 app.post('/api/mail', function (req, res) {
-  
-  console.log(req);
-  
-    // create reusable transporter object using the default SMTP transport
-    let transporter = nodemailer.createTransport({
-        host: 'secureus43.sgcpanel.com',
-        port: 465,
-        secure: true, // true for 465, false for other ports
-        auth: {
-            user: 'adam@adamelliott.com',
-            pass: 'AE4life3'
-        }
-    });
 
-    // setup email data
-    let mailOptions = {
-        from: '"CP Creative Services" <adam@adamelliott.com>', // sender address
-        to: 'adam@adamelliott.com', // list of receivers
-        subject: 'Hello', // Subject line
-        text: JSON.stringify(req.body.foo)// plain text body
+  // SMTP settings
+  let transportOptions = {
+    host: process.env.SMTP_HOST,
+    port: process.env.SMTP_PORT | 0, //Convert to int
+    ignoreTLS: process.env.SMTP_IGNORE_TLS == "true",
+    secure: process.env.SMTP_SECURE == "true",
+  };
+
+  if (process.env.MAIL_AUTH_USER && process.env.MAIL_AUTH_PASS) {
+    transportOptions.auth = {
+      user: process.env.MAIL_AUTH_USER,
+      pass: process.env.MAIL_AUTH_PASS
     };
+  }
+  // create reusable transporter object using the default SMTP transport
+  let transporter = nodemailer.createTransport(transportOptions);
 
-    // send mail with defined transport object
-    transporter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-            return console.log(error);
-        }
-        console.log('Message sent: %s', info.messageId);
-        transporter.close();
-        //res.status(status).send(body);
-        res.status(200).json(body);
-    });
+  // setup email data
+  let mailOptions = {
+    from: process.env.MAIL_FROM, // sender address
+    to: process.env.MAIL_TO, // list of receivers
+    subject: 'Hello', // Subject line
+    text: JSON.stringify(req.body)// plain text body
+  };
+
+  // send mail with defined transport object
+  transporter.sendMail(mailOptions, (err, info) => {
+    if (err) {
+      handleError(res, err, "Err! Failed to send email :(")
+    } else {
+      res.status(200).json({ messageId: info.messageId });
+      console.log('Message sent: %s', info.messageId);
+    }
+    // If we close transport before sending the response, response never gets sent. 
+    transporter.close();
+  });
 });
