@@ -175,12 +175,11 @@ function addTeam(clientData) {
 	oReq.open("POST", "api/team");
 	oReq.setRequestHeader("Content-Type","application/json");
 	oReq.onload = function() {
-		//
+		loadTeam();
 	}
 	let teamMember = {name: newMemberName, role:newMemberRole, email:newMemberEmail};
 	let payload = JSON.stringify(teamMember);
 	oReq.send(payload);
-	loadTeam();
 }
 
 function chooseTeam(e) {
