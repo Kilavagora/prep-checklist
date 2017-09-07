@@ -370,7 +370,7 @@ app.post('/api/mail', function (req, res) {
         secure: true, // true for 465, false for other ports
         auth: {
             user: 'adam@adamelliott.com',
-            pass: 'AE4life3'
+            pass: ''
         }
     });
 
