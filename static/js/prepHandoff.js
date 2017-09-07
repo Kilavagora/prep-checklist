@@ -379,20 +379,19 @@ $(function () {
 	loadClients();
 
 });
-//
-//function sendMail(){
-//	//let transporter = nodemailer.createTransport(transport[defaults]);
-//	//let data = clientList;
-//	transporter.sendMail()
-//}
-
-
-
 
 function sendMail() {
+	//$.post('api/mail', payload);
+	let oReq = new XMLHttpRequest();
+	oReq.open("POST", "api/mail");
+	oReq.setRequestHeader("Content-Type","application/json");
+	oReq.onload = function() {
+		let response = JSON.parse(this.responseText);
+		console.log(response);
+	}
 	let newClient = currentClient;
 	let payload = JSON.stringify(newClient);
-	console.log(payload);
-	$.post('api/mail', payload);
+	console.log("payload" + payload);
+	oReq.send(payload);
 }
      

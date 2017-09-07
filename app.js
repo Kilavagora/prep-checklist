@@ -170,6 +170,7 @@ app.get("/api/team", (req, res) => {
 // POST: create a new client record
 app.post("/api/team", (req, res) => {
   let newnote = req.body;
+  console.log(req);
   newnote.createDate = new Date();
 
   //if (!req.body.notes) {
@@ -363,23 +364,33 @@ app.post('/api/mail', function (req, res) {
   
   console.log(req);
   
+  
     // create reusable transporter object using the default SMTP transport
     let transporter = nodemailer.createTransport({
         host: 'secureus43.sgcpanel.com',
         port: 465,
         secure: true, // true for 465, false for other ports
         auth: {
-            user: 'adam@adamelliott.com',
-            pass: ''
+            user: process.env.MY_EMAIL,
+            pass: process.env.MY_PASSWORD
         }
     });
+    
+    
+    //object data
+    let myText = req.body.clientName + 'has been prepped for web development by ' + req.body.prepDesigner + '. The project team consists of project manager ' + req.body.projectManager + ', art director ' + req.body.artDirector + ', and comp designer ' + req.body.compDesigner + ".";
+    
+    let myHtml = '<html><h4>' + req.body.clientName + ' has been prepped for web development by ' + req.body.prepDesigner + '</h4> <strong><p>Asset location: </strong>' + req.body.filePath + '</p><strong>The project team consists of:</strong><ul><li> Project manager: ' + req.body.projectManager + '</li><li>Art director: ' + req.body.artDirector + '</li><li>Comp designer: ' + req.body.compDesigner + '</li></ul> <strong><p>Project e-mail: </strong>'+ req.body.projectEmail +'</p></html>';
+    
 
     // setup email data
     let mailOptions = {
         from: '"CP Creative Services" <adam@adamelliott.com>', // sender address
         to: 'adam@adamelliott.com', // list of receivers
-        subject: 'Hello', // Subject line
-        text: JSON.stringify(req.body.foo)// plain text body
+        subject: req.body.clientName + ' - Ready for Web Dev' , // Subject line
+        //text: JSON.stringify(req.body.currentClient)// plain text body
+        text: myText,// plain text body
+        html: myHtml
     };
 
     // send mail with defined transport object
@@ -389,7 +400,7 @@ app.post('/api/mail', function (req, res) {
         }
         console.log('Message sent: %s', info.messageId);
         transporter.close();
-        //res.status(status).send(body);
-        res.status(200).json(body);
+        res.status(status).send(body);
+        //res.status(200);
     });
 });
