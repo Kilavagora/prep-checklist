@@ -105,9 +105,7 @@
 	
 	<br/>
 	<div id="formSubmit">
-	<input id="savePDF" type="button"  value="Save Palette" onclick="savePalette()"></input>
-	<input id="savePDF" type="button"  value="Export PDF" onclick="savePDF()"></input>
-	<!--<input id="exportColor" type="button" value="List Colors" onclick="exportCPcolor()"></input>-->
+	<input id="savePalette" type="button"  value="Save Palette"></input>
 	<input id="resetColor" type="button"  value="Return" onclick="showHandoff()"></input>
 	
 	
@@ -235,6 +233,12 @@
 
 <script>	
 $(document).ready(function(){
+	
+$('#savePalette').click(function(){
+	savePalette();
+});
+
+
 
 });
 </script>

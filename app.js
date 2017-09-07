@@ -362,9 +362,6 @@ app.delete("/api/color/:id", (req, res) => {
 //// Only needed if you don't have a real mail account for testing
 app.post('/api/mail', function (req, res) {
   
-  console.log(req);
-  
-  
     // create reusable transporter object using the default SMTP transport
     let transporter = nodemailer.createTransport({
         host: 'secureus43.sgcpanel.com',
@@ -376,18 +373,17 @@ app.post('/api/mail', function (req, res) {
         }
     });
     
-    
-    //object data
+    //Format object data for email
     let myText = req.body.clientName + 'has been prepped for web development by ' + req.body.prepDesigner + '. The project team consists of project manager ' + req.body.projectManager + ', art director ' + req.body.artDirector + ', and comp designer ' + req.body.compDesigner + ".";
     
-    let myHtml = '<html><h4>' + req.body.clientName + ' has been prepped for web development by ' + req.body.prepDesigner + '</h4> <strong><p>Asset location: </strong>' + req.body.filePath + '</p><strong>The project team consists of:</strong><ul><li> Project manager: ' + req.body.projectManager + '</li><li>Art director: ' + req.body.artDirector + '</li><li>Comp designer: ' + req.body.compDesigner + '</li></ul> <strong><p>Project e-mail: </strong>'+ req.body.projectEmail +'</p></html>';
+    let myHtml = '<html><h4>' + req.body.clientName + ' has been prepped for web development by ' + req.body.prepDesigner + '</h4> <strong><p>Asset location: </strong>' + req.body.filePath + '</p><strong>The project team consists of:</strong><ul><li> Project manager: ' + req.body.projectManager + '</li><li>Art director: ' + req.body.artDirector + '</li><li>Comp designer: ' + req.body.compDesigner + '</li></ul> <strong><p>Project e-mail: </strong>'+ req.body.projectEmail +'</p><strong><p>Notes: </strong>'+ req.body.notes +'</p></html>';
     
 
-    // setup email data
+    // setup email options
     let mailOptions = {
         from: '"CP Creative Services" <adam@adamelliott.com>', // sender address
         to: 'adam@adamelliott.com', // list of receivers
-        subject: req.body.clientName + ' - Ready for Web Dev' , // Subject line
+        subject: req.body.clientName + ' is ready for Web Dev' , // Subject line
         //text: JSON.stringify(req.body.currentClient)// plain text body
         text: myText,// plain text body
         html: myHtml
@@ -399,8 +395,10 @@ app.post('/api/mail', function (req, res) {
             return console.log(error);
         }
         console.log('Message sent: %s', info.messageId);
-        transporter.close();
-        res.status(status).send(body);
         //res.status(200);
     });
+    
+    // close transporter and send response to browser
+    transporter.close();
+    res.status(200).send(req.body);
 });
