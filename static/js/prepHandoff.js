@@ -106,6 +106,10 @@ function loadClientForm(e) {
 		if (clientsArray.font4 != "Choose...") {clientFonts.push(clientsArray.font4);WebFont.load({google: {families: [clientsArray.font4]}});}
 		if (clientsArray.font5 != "Choose...") {clientFonts.push(clientsArray.font5);WebFont.load({google: {families: [clientsArray.font5]}});}
 		if (clientsArray.font6 != "Choose...") {clientFonts.push(clientsArray.font6);WebFont.load({google: {families: [clientsArray.font6]}});}
+		
+		console.log(clientsArray.clientPalette);
+		loadColorPalette(clientsArray.clientPalette);
+		
 		currentClient = clientsArray;
 	}
    oReq.send();

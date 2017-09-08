@@ -807,7 +807,7 @@ function loadColorPalette(e) {
                                                 $('#colorPalettePreview').append('<a data-toggle="tooltip" data-placement="top" data-original-title="' + clientsArray[id] + '"><div class="colorThumb" style="background-color:' + clientsArray[id] +'"></div></a>');
                         	}
                         }
-		currentClient = clientsArray;
+		colorArray = clientsArray;
                         $('[data-toggle="tooltip"]').tooltip({placement: 'top'});
 	}
    oReq.send();
@@ -889,7 +889,7 @@ function saveColorPDF() {
             var stCity = $("#clientName").val();
 
             //Add designers name
-            var prep = $("#prepName").val();
+            var prep = $("#prepDesigner").val();
             
             //Assemble PDF
             //doc.addImage(imgData, 'PNG', 1, 1, .25, .195);
