@@ -24,13 +24,16 @@
 					integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
 					crossorigin="anonymous"></script>
 			
+			<!--Google Fonts Web Load-->
+			<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+			
 			<!--jsColor
 			<script src="jscolor.js"></script>
 			-->
 						
 			<!--jsPDF-->
-			<script src="js/jspdf.min.js"></script>
-			<script src="js/jspdf.debug.js"></script>
+			<!--<script src="js/jspdf.min.js"></script>-->
+			<!--<script src="js/jspdf.debug.js"></script>-->
 		
 			<!--CSS-->
 			<link rel="stylesheet" type="text/css" href="css/cpColor.css?<?php echo date('l jS \of F Y h:i:s A'); ?>" />
@@ -105,6 +108,7 @@ $('#prepGuide').hide();
 $('#prepColor').hide();
 
 function showGuide() {
+	hideTota11y();
 	$('#prepSplash').slideUp();
 	$('#prepHandoff').slideUp();
 	$('#prepColor').slideUp();
@@ -112,6 +116,7 @@ function showGuide() {
 }
 
 function showColor() {
+	loadTota11y();
 	$('#prepSplash').slideUp();
 	$('#prepHandoff').slideUp();
 	$('#prepGuide').slideUp();
@@ -119,12 +124,12 @@ function showColor() {
 }
 
 function showHandoff() {
+	hideTota11y();
 	$('#prepSplash').slideUp();
 	$('#prepGuide').slideUp();
 	$('#prepColor').slideUp();
 	$('#prepHandoff').slideDown();
 }
-
 
 $('#guide').click(function(){
 	showGuide();

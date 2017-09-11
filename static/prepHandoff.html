@@ -3,9 +3,9 @@
 	<div class="row">
 		<h4 class="pull-left">Prep Hand-off Form</h4>
 		<!--<button value="View Team Members" data-placement="bottom" data-toggle="modal" data-target="#teamModal" onclick="loadTeam()" class="pull-right cpBrand">Load Team Members</button>-->
-		<button value="Load Color Palette" data-placement="bottom" data-toggle="modal" data-target="#clientModal" onclick="loadClients()" class="pull-right cpBrand">Load Entry</button>
-		<button value="Save Color Palette" data-placement="bottom" onclick="submitForm()" class="pull-right cpBrand">Save Entry</button>
-		<button value="New Color Palette" data-placement="bottom" id="prepClear2" class="btn btn-default pull-right cpBrand">New Entry</button>
+		<button value="Load Client List" data-placement="bottom" data-toggle="modal" data-target="#clientModal" onclick="loadClients()" class="pull-right cpBrand">Load Entry</button>
+		<button value="Save Entry" data-placement="bottom" onclick="submitForm()" class="pull-right cpBrand">Save Entry</button>
+		<button value="New Entry" data-placement="bottom" id="prepClear2" class="btn btn-default pull-right cpBrand">New Entry</button>
 	</div>
 	<form id="handoffForm">
 		<div class="row">
@@ -76,19 +76,38 @@
 				<div class="checkbox"><label><input type="checkbox" name="bgBasic" id="bgBasic">Basic Color/Texture</label></div>
 			</div>
 			<div class="col-md-2">
-				<label for="otherModules">Other modules:</label>
-				<div class="checkbox"><label><input type="checkbox" name="slideshow" id="slideshow"> Slideshow</label></div>					
-				<div class="checkbox"><label><input type="checkbox" name="graphicLinks" id="graphicLinks"> Graphic Links</label></div>
+				<label for="otherModules">Slideshow:</label>
+				<div class="checkbox"><label><input type="checkbox" name="photoSlideshow" id="photoSlideshow"> Photo Slideshow</label></div>					
+				<div class="checkbox"><label><input type="checkbox" name="captionsSlideshow" id="captionsSlideshow"> Captions</label></div>
+				<div class="checkbox"><label><input type="checkbox" name="customSlideshow" id="infoAdvanced"> Custom Colors</label></div>
+				<div class="checkbox"><label><input type="checkbox" name="pngSlideshow" id="tabbedArea"> PNG Slideshow</label></div>
+			</div>
+			<div class="col-md-2">
+				<label for="otherModules">Graphic Links:</label>				
+				<div class="checkbox"><label><input type="checkbox" name="standardRollover" id="standardRollover"> Standard Rollover</label></div>
+				<div class="checkbox"><label><input type="checkbox" name="fancyButtons" id="fancyButtons"> Fancy Buttons</label></div>
+				<div class="checkbox"><label><input type="checkbox" name="graphicLinkTransitions" id="graphicLinkTransitions"> CSS Transitions</label></div>
+				<div class="checkbox"><label><input type="checkbox" name="graphicLinkOther" id="graphicLinkOther"> Other</label></div>
+			</div>
+			<div class="col-md-2">
+				<label for="otherModules">Other modules:</label>				
 				<div class="checkbox"><label><input type="checkbox" name="infoAdvanced" id="infoAdvanced"> Info Advanced</label></div>
 				<div class="checkbox"><label><input type="checkbox" name="tabbedArea" id="tabbedArea"> Tabbed Area</label></div>
 				<div class="checkbox"><label><input type="checkbox" name="spotlightMM" id="spotlightMM"> Spotlight in MM</label></div>
-				<div class="checkbox"><label><input type="checkbox" name="tabbedArea" id="tabbedArea"> PNG Slideshow</label></div>
 			</div>
 			</div>
 
 		
 		<div class="row">
 			<h4>Template Setup Features</h4>
+			<div class="col-md-2">
+				<div class="checkbox">
+					<label><input type="checkbox" name="banners" id="banners">Banners</label>
+				</div>
+				<div class="checkbox">
+					<label><input type="checkbox" name="departmentHeaders" id=="departmentHeaders"> Department Headers</label>
+				</div>
+			</div>
 			<div class="col-md-2">
 				<div class="checkbox">
 					<label><input type="checkbox" name="fixedGlobals" id=="fixedGlobals"> Fixed globals</label>
@@ -102,7 +121,7 @@
 					<label><input type="checkbox" name="cssOverlay" id="cssOverlay"> CSS Overlay</label>
 			</div>
 				<div class="checkbox">
-					<label><input type="checkbox" name="textures" id="textures"> Textures</label>
+					<label><input type="checkbox" name="texturesPatterns" id="texturesPatterns"> Textures/Patterns</label>
 				</div>
 			</div>
 			<div class="col-md-2">
@@ -113,6 +132,22 @@
 					<label><input type="checkbox" name="gradients" id="gradients"> Gradients</label>
 				</div>
 			</div>
+			<div class="col-md-2">
+				<div class="checkbox">
+					<label><input type="checkbox" name="cssTransitions" id="cssTransitions"> CSS Transitions</label>
+				</div>
+				<div class="checkbox">
+					<label><input type="checkbox" name="animations" id="animations"> Animations</label>
+				</div>
+			</div>
+			<div class="col-md-2">
+				<div class="checkbox">
+					<label><input type="checkbox" name="videoBanner" id="videoBanner">Video Banner</label>
+				</div>
+				<div class="checkbox">
+					<label><input type="checkbox" name="resizingFixedHeader" id="resizingFixedHeader"> Resizing Fixed Header</label>
+				</div>
+			</div>
 
 		</div>
 		
@@ -120,7 +155,6 @@
 			<h4>Typography</h4>
 			<div class="col-md-2">
 				<label for="ad">Typeface 1:</label>
-				<!--<input type="text" class="form-control" name="font1" id="font1" value="Font name">-->
 				<select name="font1" id="font1"><option>Choose...</option></select>
 			</div>
 			<div class="col-md-2">
@@ -223,52 +257,54 @@
 			
 			<div class="col-md-6">
 				<h4>Color Palette</h4>
-				<input type="text" class="btn btn-default" onclick="loadClientList()" id="clientPalette" name="clientPalette" data-toggle="modal" data-target="#colorModal" value="Click to choose..."></input>
-				<span class="glyphicon glyphicon-refresh"></span>
+				<input type="text" class="btn btn-default" onclick="loadClientList()" style="width:250px;" id="clientPalette" name="clientPalette" data-toggle="modal" data-target="#colorModal" value="Click to choose..."></input>
 				<div id="colorPalettePreview"></div>
 			</div>
 			
 			<div class="col-md-6">
-				<h4>Client PDF</h4>
+				<h4>PDF Assets <span style="text-transform:none;font-weight:normal; padding-left:1em;">  (Upload to 'Site Layout' Folder)</span></h4>
+				
+				<button type="button" class="btn btn-default" onclick="saveColorPDF()">Generate Color PDF</button>
 				<button type="button" class="btn btn-default" onclick="saveClientPDF()">Generate Client PDF</button>
+				
 			</div>
 		</div>
 		
 		
-		<div class="row">
-			<h4>Asset Sign-off</h4>
-			<div class="col-md-2">
-				<div class="checkbox">
-					<label><input type="checkbox" name="psd" id="psd"> Photoshop Files</label>
-				</div>
-			</div>
-			<div class="col-md-2">
-				<div class="checkbox">
-					<label><input type="checkbox" name="jpg" id="jpg"> JPG Previews</label>
-			</div>
-			</div>
-			<div class="col-md-2">
-				<div class="checkbox">
-					<label><input type="checkbox" name="clientPdf" id="clientPdf"> Client PDF</label>
-				</div>
-			</div>
-			<div class="col-md-2">
-				<div class="checkbox">
-					<label><input type="checkbox" name="colorPalette" id="colorPalette"> Color Palette</label>
-				</div>
-			</div>
-			<div class="col-md-2">
-				<div class="checkbox">
-					<label><input type="checkbox" name="additionalGraphics" id="additionalGraphics"> Additional Graphics</label>
-				</div>								
-			</div>
-			<div class="col-md-2">
-				<div class="checkbox">
-					<label><input type="checkbox" name="assets" id="assets"> Template Assets</label>
-				</div>								
-			</div>
-		
-		</div>
+		<!--<div class="row">-->
+		<!--	<h4>Asset Sign-off</h4>-->
+		<!--	<div class="col-md-2">-->
+		<!--		<div class="checkbox">-->
+		<!--			<label><input type="checkbox" name="psd" id="psd"> Photoshop Files</label>-->
+		<!--		</div>-->
+		<!--	</div>-->
+		<!--	<div class="col-md-2">-->
+		<!--		<div class="checkbox">-->
+		<!--			<label><input type="checkbox" name="jpg" id="jpg"> JPG Previews</label>-->
+		<!--	</div>-->
+		<!--	</div>-->
+		<!--	<div class="col-md-2">-->
+		<!--		<div class="checkbox">-->
+		<!--			<label><input type="checkbox" name="clientPdf" id="clientPdf"> Client PDF</label>-->
+		<!--		</div>-->
+		<!--	</div>-->
+		<!--	<div class="col-md-2">-->
+		<!--		<div class="checkbox">-->
+		<!--			<label><input type="checkbox" name="colorPalette" id="colorPalette"> Color Palette</label>-->
+		<!--		</div>-->
+		<!--	</div>-->
+		<!--	<div class="col-md-2">-->
+		<!--		<div class="checkbox">-->
+		<!--			<label><input type="checkbox" name="additionalGraphics" id="additionalGraphics"> Additional Graphics</label>-->
+		<!--		</div>								-->
+		<!--	</div>-->
+		<!--	<div class="col-md-2">-->
+		<!--		<div class="checkbox">-->
+		<!--			<label><input type="checkbox" name="assets" id="assets"> Template Assets</label>-->
+		<!--		</div>								-->
+		<!--	</div>-->
+		<!---->
+		<!--</div>-->
 		<div class="row">
 			<h4>Site Layout Details</h4>
 		 <div class="col-md-12">
@@ -288,6 +324,7 @@
 		<div class="col-md-12">
 		<div id="prepSubmit" class="btn btn-default cpBrand">Save Entry</div>
 		<div id="prepClear" class="btn btn-default clear ">New Entry</div>
+		<div id="prepMail" class="btn btn-default clear ">E-mail Project Team</div>
 		
 	  </form>
 		</div>
@@ -389,8 +426,13 @@
 			$('#prepHandoff').load("prepHandoff.html");
 		});
 		
+		
 		$('#prepClear2').click(function(){
 			$('#prepHandoff').load("prepHandoff.html");
+		});
+		
+		$('#prepMail').click(function(){
+			sendMail();
 		});
 		
 		$('#teamInputs input').focus(function(event){

@@ -170,6 +170,7 @@ app.get("/api/team", (req, res) => {
 // POST: create a new client record
 app.post("/api/team", (req, res) => {
   let newnote = req.body;
+  console.log(req);
   newnote.createDate = new Date();
 
   //if (!req.body.notes) {
@@ -378,12 +379,17 @@ app.post('/api/mail', function (req, res) {
   // create reusable transporter object using the default SMTP transport
   let transporter = nodemailer.createTransport(transportOptions);
 
+  //Format object data for email
+  let myText = req.body.clientName + 'has been prepped for web development by ' + req.body.prepDesigner + '. The project team consists of project manager ' + req.body.projectManager + ', art director ' + req.body.artDirector + ', and comp designer ' + req.body.compDesigner + ".";
+  let myHtml = '<html><h4>' + req.body.clientName + ' has been prepped for web development by ' + req.body.prepDesigner + '</h4> <strong><p>Asset location: </strong>' + req.body.filePath + '</p><strong>The project team consists of:</strong><ul><li> Project manager: ' + req.body.projectManager + '</li><li>Art director: ' + req.body.artDirector + '</li><li>Comp designer: ' + req.body.compDesigner + '</li></ul> <strong><p>Project e-mail: </strong>'+ req.body.projectEmail +'</p><strong><p>Notes: </strong>'+ req.body.notes +'</p></html>';
+   
   // setup email data
   let mailOptions = {
     from: process.env.MAIL_FROM, // sender address
     to: process.env.MAIL_TO, // list of receivers
     subject: 'Hello', // Subject line
-    text: JSON.stringify(req.body)// plain text body
+    text: myText,// plain text body
+    html: myHtml
   };
 
   // send mail with defined transport object
